@@ -8,45 +8,48 @@
 import SwiftUI
 
 struct ContentView: View {
-    //状態を保持するプロパティ
-    @State private var totalAmount = "" //入力金額
-    @State private var numberOfPeople = 2 //初期人数（Pickerのタグと連動）
+    @State private var totalAmount = ""
+    @State private var numberOfPeople = 2
+    
+    @AppStorage("isDarkMode") private var isDarkMode = false
 
     var body: some View {
         NavigationView {
             Form {
-                //金額入力セクション
-                Section(header: Text("お会計")) {
-                    TextField("金額を入力", text: $totalAmount)
-                        .keyboardType(.numberPad) //数字キーボードを表示
+                // 外観設定セクション
+                Section(header: Text("設定")) {
+                    Toggle("ダークモード", isOn: $isDarkMode)
                 }
 
-                //人数選択セクション（プルダウン）
+                Section(header: Text("お会計")) {
+                    TextField("金額を入力", text: $totalAmount)
+                        .keyboardType(.numberPad)
+                }
+
                 Section(header: Text("人数")) {
                     Picker("人数を選択", selection: $numberOfPeople) {
                         ForEach(2..<21) { number in
                             Text("\(number) 人").tag(number)
                         }
                     }
-                    .pickerStyle(.menu) //プルダウン（メニュー）形式
+                    .pickerStyle(.menu)
                 }
 
-                //計算結果セクション
                 Section(header: Text("一人あたりの金額")) {
                     Text("\(calculateAmount()) 円")
                         .font(.headline)
-                        .foregroundColor(.blue)
+                        .foregroundColor(isDarkMode ? .yellow : .blue) // モードによって色を変える例
                 }
             }
             .navigationTitle("割り勘くん")
         }
+        .preferredColorScheme(isDarkMode ? .dark : .light)
     }
 
-    //割り勘計算ロジック
     func calculateAmount() -> Int {
         let amount = Double(totalAmount) ?? 0
         let result = amount / Double(numberOfPeople)
-        return Int(ceil(result)) //切り上げして整数を返す
+        return Int(ceil(result))
     }
 }
 #Preview {
