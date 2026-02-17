@@ -52,6 +52,7 @@ struct ContentView: View {
         return Int(ceil(result))
     }
 }
+
 #Preview {
     ContentView()
 }
