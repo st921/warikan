@@ -10,14 +10,16 @@ import SwiftUI
 struct ContentView: View {
     @State private var totalAmount = ""
     @State private var numberOfPeople = 2
-    
     @AppStorage("isDarkMode") private var isDarkMode = false
+    
+    @State private var themeColor: Color = .blue
 
     var body: some View {
         NavigationView {
             Form {
-                // 外観設定セクション
-                Section(header: Text("設定")) {
+                // カラーカスタマイズセクション
+                Section(header: Text("カスタマイズ")) {
+                    ColorPicker("テーマカラーを選択", selection: $themeColor)
                     Toggle("ダークモード", isOn: $isDarkMode)
                 }
 
@@ -37,8 +39,18 @@ struct ContentView: View {
 
                 Section(header: Text("一人あたりの金額")) {
                     Text("\(calculateAmount()) 円")
-                        .font(.headline)
-                        .foregroundColor(isDarkMode ? .yellow : .blue) // モードによって色を変える例
+                        .font(.system(size: 30, weight: .bold, design: .rounded))
+                        .foregroundColor(themeColor)
+                }
+                
+                // ボタンなどがある場合もテーマ色を適用
+                Button(action: { /* 計算実行などの処理 */ }) {
+                    Text("計算を保存する")
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(themeColor)
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
                 }
             }
             .navigationTitle("割り勘くん")
@@ -52,7 +64,6 @@ struct ContentView: View {
         return Int(ceil(result))
     }
 }
-
 #Preview {
     ContentView()
 }
