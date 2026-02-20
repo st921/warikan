@@ -9,3 +9,4 @@
 <img width="268" height="561" alt="スクリーンショット 2026-02-19 0 28 41" src="https://github.com/user-attachments/assets/82c4d139-7c4a-4785-b8a8-bb5634051dd3" />
 <img width="264" height="548" alt="スクリーンショット 2026-02-19 0 28 48" src="https://github.com/user-attachments/assets/1bc5ad91-ebe7-4763-9b16-f80e14c2c628" />
 <img width="280" height="551" alt="スクリーンショット 2026-02-19 0 29 01" src="https://github.com/user-attachments/assets/fb72b5bf-8505-4b7a-9a9e-8de99b2ec637" />
+<img width="260" height="541" alt="スクリーンショット 2026-02-21 1 34 05" src="https://github.com/user-attachments/assets/4e4331e2-de44-425d-a7db-84400e1d939d" />
