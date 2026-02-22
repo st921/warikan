@@ -17,7 +17,7 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             Form {
-                // カラーカスタマイズセクション
+                //カラーカスタマイズセクション
                 Section(header: Text("カスタマイズ")) {
                     ColorPicker("テーマカラーを選択", selection: $themeColor)
                     Toggle("ダークモード", isOn: $isDarkMode)
@@ -43,7 +43,7 @@ struct ContentView: View {
                         .foregroundColor(themeColor)
                 }
                 
-                // ボタンなどがある場合もテーマ色を適用
+                //ボタンなどがある場合もテーマ色を適用
                 Button(action: { /* 計算実行などの処理 */ }) {
                     Text("計算を保存する")
                         .frame(maxWidth: .infinity)
